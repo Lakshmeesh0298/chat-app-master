@@ -81,8 +81,12 @@ const deleteAuth = async (req, res) => {
 
 // batchList
 const BatchlistController = async (req, res) => {
-  let batchData = await BatchModel.find({});
-  res.status(201).json({ batchData });
+  try {
+    let batchData = await BatchModel.find({});
+    res.status(201).json({ batchData });
+  } catch (error) {
+    res.json({ error });
+  }
 };
 
 // individual batch list
